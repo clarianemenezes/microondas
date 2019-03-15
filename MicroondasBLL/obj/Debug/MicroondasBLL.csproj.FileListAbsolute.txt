@@ -1,0 +1,6 @@
+C:\Users\Clariane\Desktop\Clariane\Clariane_Menezes\MicroondasBLL\bin\Debug\MicroondasBLL.dll
+C:\Users\Clariane\Desktop\Clariane\Clariane_Menezes\MicroondasBLL\bin\Debug\MicroondasBLL.pdb
+C:\Users\Clariane\Desktop\Clariane\Clariane_Menezes\MicroondasBLL\obj\Debug\MicroondasBLL.csprojAssemblyReference.cache
+C:\Users\Clariane\Desktop\Clariane\Clariane_Menezes\MicroondasBLL\obj\Debug\MicroondasBLL.csproj.CoreCompileInputs.cache
+C:\Users\Clariane\Desktop\Clariane\Clariane_Menezes\MicroondasBLL\obj\Debug\MicroondasBLL.dll
+C:\Users\Clariane\Desktop\Clariane\Clariane_Menezes\MicroondasBLL\obj\Debug\MicroondasBLL.pdb

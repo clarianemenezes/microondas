@@ -1,0 +1,6 @@
+C:\Users\Clariane\Desktop\Clariane\Clariane_Menezes\MicroondasModels\bin\Debug\MicroondasModels.dll
+C:\Users\Clariane\Desktop\Clariane\Clariane_Menezes\MicroondasModels\bin\Debug\MicroondasModels.pdb
+C:\Users\Clariane\Desktop\Clariane\Clariane_Menezes\MicroondasModels\obj\Debug\MicroondasModels.csprojAssemblyReference.cache
+C:\Users\Clariane\Desktop\Clariane\Clariane_Menezes\MicroondasModels\obj\Debug\MicroondasModels.csproj.CoreCompileInputs.cache
+C:\Users\Clariane\Desktop\Clariane\Clariane_Menezes\MicroondasModels\obj\Debug\MicroondasModels.dll
+C:\Users\Clariane\Desktop\Clariane\Clariane_Menezes\MicroondasModels\obj\Debug\MicroondasModels.pdb

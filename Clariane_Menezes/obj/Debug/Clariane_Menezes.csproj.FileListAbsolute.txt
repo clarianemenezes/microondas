@@ -1,0 +1,13 @@
+C:\Users\Clariane\Desktop\Clariane\Clariane_Menezes\Clariane_Menezes\bin\Debug\Clariane_Menezes.exe.config
+C:\Users\Clariane\Desktop\Clariane\Clariane_Menezes\Clariane_Menezes\bin\Debug\Clariane_Menezes.exe
+C:\Users\Clariane\Desktop\Clariane\Clariane_Menezes\Clariane_Menezes\bin\Debug\Clariane_Menezes.pdb
+C:\Users\Clariane\Desktop\Clariane\Clariane_Menezes\Clariane_Menezes\bin\Debug\MicroondasBLL.dll
+C:\Users\Clariane\Desktop\Clariane\Clariane_Menezes\Clariane_Menezes\bin\Debug\MicroondasBLL.pdb
+C:\Users\Clariane\Desktop\Clariane\Clariane_Menezes\Clariane_Menezes\obj\Debug\Clariane_Menezes.csprojAssemblyReference.cache
+C:\Users\Clariane\Desktop\Clariane\Clariane_Menezes\Clariane_Menezes\obj\Debug\Clariane_Menezes.Form1.resources
+C:\Users\Clariane\Desktop\Clariane\Clariane_Menezes\Clariane_Menezes\obj\Debug\Clariane_Menezes.Properties.Resources.resources
+C:\Users\Clariane\Desktop\Clariane\Clariane_Menezes\Clariane_Menezes\obj\Debug\Clariane_Menezes.csproj.GenerateResource.cache
+C:\Users\Clariane\Desktop\Clariane\Clariane_Menezes\Clariane_Menezes\obj\Debug\Clariane_Menezes.csproj.CoreCompileInputs.cache
+C:\Users\Clariane\Desktop\Clariane\Clariane_Menezes\Clariane_Menezes\obj\Debug\Clariane_Menezes.csproj.CopyComplete
+C:\Users\Clariane\Desktop\Clariane\Clariane_Menezes\Clariane_Menezes\obj\Debug\Clariane_Menezes.exe
+C:\Users\Clariane\Desktop\Clariane\Clariane_Menezes\Clariane_Menezes\obj\Debug\Clariane_Menezes.pdb
