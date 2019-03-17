@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using MicroondasModels;
 
 namespace MicroondasBLL
@@ -10,85 +13,119 @@ namespace MicroondasBLL
     public class Microondas
     {
         public List<Aquecimento> ProgramaAquecimento { get; set; }
-        private Aquecimento objAquecimento;
-        public Task transac;
-        public Task aguardaTransac;
+        public Aquecimento objAquecimento { get; set; }
+        public StringBuilder mensagem { get; set; }
+
+        public Microondas()
+        {
+            ProgramaAquecimento = new List<Aquecimento>();
+            InicializaProgramaAquecimento();
+
+            this.mensagem = new StringBuilder();
+        }
 
         private bool PotenciaIsNULL()
-        { return objAquecimento.Potencia == -1; }
+        { return objAquecimento?.Potencia == "-1"; }
 
         private bool TempoIsNULL()
-        { return objAquecimento.Tempo == -1; }
+        { return objAquecimento?.Tempo == "-1"; }
 
         public bool ValidaPotencia()
-        {   return (objAquecimento.Potencia > 0 && objAquecimento.Potencia < 11);
+        {   return (Convert.ToInt32(objAquecimento.Potencia) > 0 && Convert.ToInt32(objAquecimento.Potencia) < 11);
         }
 
         public bool ValidaTempo()
-        {   return (objAquecimento.Tempo > 0 && objAquecimento.Tempo < 200);
+        { 
+            int tempo = Convert.ToInt32(objAquecimento.Tempo);
+            return (tempo > 0 && tempo <= 200);
         }
 
-        public string MostrarTexto(string textoAntigo, int pontos)
+        public string TextoPorSegundo(int potencia, string caracter)
         {
             string textoNovo = "";
-            for (int i = 0; i < pontos; i++)
-                textoNovo += ".";
-            return textoAntigo + textoNovo;
+            for (int i = 0; i < potencia; i++)
+                textoNovo += caracter;
+            return textoNovo;
         }
-        public string Aquecer(Aquecimento objAquecimento)
+        public string Aquecer()
         {
+            int tempo = -1, potencia = -1;
+            int.TryParse(objAquecimento.Tempo, out tempo);
+            int.TryParse(objAquecimento.Potencia, out potencia);
+            this.mensagem.Clear();
 
+            for (int i = 0; i < tempo; i++)
+            {
+                string textoNovo = "";
+                for (int j = 0; j < potencia; j++)
+                    textoNovo += objAquecimento.Caracter;
+                this.mensagem.Append(textoNovo);
+            }
+
+            this.mensagem.Append("aquecida");
             return "aquecida";
         }
 
-        public string InicioRapido()
+        public void InicioRapido()
         {
-            Aquecimento objAquecimento = new Aquecimento();
+            objAquecimento = new Aquecimento();
 
-            objAquecimento.Potencia = 8;
-            objAquecimento.Tempo = 30;
-
-            // objAquecimento.Potencia = ProgramaAquecimento.Pipoca.Potencia;
-            //objAquecimento.Tempo = ProgramaAquecimento.Pipoca.Tempo;
-
-            return Aquecer(objAquecimento);
+            objAquecimento.Potencia = "08";
+            objAquecimento.Tempo = "0030";
+            objAquecimento.Caracter = ".";
         }
 
-        public void Inicio()
+        public void Inicio(string tempo, string potencia, string caractere)
         {
+            objAquecimento = new Aquecimento();
 
+            objAquecimento.Potencia = potencia;
+            objAquecimento.Tempo = tempo;
+            objAquecimento.Caracter = caractere;
         }
 
-        public void LigarMicroondas()
+        public string LigarMicroondas()
         {
-            if (!TempoIsNULL())
+            try
             {
-                if (ValidaTempo())
-                {
-                    if (!PotenciaIsNULL())
+                if (!TempoIsNULL())
+                { 
+                    if (ValidaTempo())
                     {
-                        if (ValidaPotencia())
+                        if (!PotenciaIsNULL())
                         {
-                            this.transac = Task.Factory.StartNew(() => Inicio());
-                            this.transac.Wait();
+                            if (ValidaPotencia())
+                            {
+                                return Aquecer();
+                            }   
+                            else throw new System.ArgumentException("Parametrize a potência corretamente, entre 1 e 10!");
                         }
-                        else throw new System.ArgumentException("Parametrize a potência corretamente, entre 1 e 10!");
+                        else throw new System.ArgumentException("Parametrize a potência antes de iniciar o aquecimento!");
                     }
-                    else throw new System.ArgumentException("Parametrize a potência antes de iniciar o aquecimento!");
+                    else throw new System.ArgumentException("Parametrize o tempo corretamente, entre 1 segundo e 2 minutos!");
                 }
-                else throw new System.ArgumentException("Parametrize o tempo corretamente, entre 1 segundo e 2 minutos!");
+                else throw new System.ArgumentException("Parametrize o tempo antes de iniciar o aquecimento!");
             }
-            else throw new System.ArgumentException("Parametrize o tempo antes de iniciar o aquecimento!");
+            catch (System.ArgumentException ae)
+            {
+                MessageBox.Show(ae.Message, "Microondas - ERRO", System.Windows.Forms.MessageBoxButtons.OK);
+                return "";
+            }
         }
 
         public void InicializaProgramaAquecimento()
         {
-            ProgramaAquecimento.Add(new Aquecimento("Lasanha", "650", "10", "esquentar lasanha", ""));
-            ProgramaAquecimento.Add(new Aquecimento("Pipoca", "300", "6", "estourar pipoca", ""));
-            ProgramaAquecimento.Add(new Aquecimento("Pizza", "500", "8", "esquentar pizza", ""));
-            ProgramaAquecimento.Add(new Aquecimento("Bebidas", "200", "4", "esquentar bebidas", ""));
-            ProgramaAquecimento.Add(new Aquecimento("Vegetais", "150", "5", "esquentar vegetais", ""));
-            ProgramaAquecimento.Add(new Aquecimento("Reaquecer", "250", "7", "reaquecer comida", ""));
+            ProgramaAquecimento.Add(new Aquecimento("Lasanha", "0200", "10", "esquentar lasanha", "!"));
+            ProgramaAquecimento.Add(new Aquecimento("Pipoca", "0150", "06", "estourar pipoca", "@"));
+            ProgramaAquecimento.Add(new Aquecimento("Pizza", "0200", "08", "esquentar pizza", "#"));
+            ProgramaAquecimento.Add(new Aquecimento("Bebidas", "0100", "04", "esquentar bebidas", "$"));
+            ProgramaAquecimento.Add(new Aquecimento("Vegetais", "0050", "03", "esquentar vegetais", "%"));
+            ProgramaAquecimento.Add(new Aquecimento("Reaquecer", "0130", "07", "reaquecer comida", "&"));
+        }
+
+        public void IncluiNovoProgramaAquecimento(string nome, string tempo, string potencia, string instrucoes, string caracter)
+        {
+            ProgramaAquecimento.Add(new Aquecimento(nome, tempo, potencia, instrucoes, caracter));
         }
 
         public bool Gravar(Aquecimento objAquecimento)

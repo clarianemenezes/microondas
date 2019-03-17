@@ -9,8 +9,8 @@ namespace MicroondasModels
     public class Aquecimento
     {
         public string Nome { get; set; }
-        public int Tempo { get; set; }
-        public int Potencia { get; set; }
+        public string Tempo { get; set; }
+        public string Potencia { get; set; }
         public string Instrucoes { get; set; }
         public string Caracter { get; set; }
 
@@ -19,7 +19,7 @@ namespace MicroondasModels
 
         }
 
-        public Aquecimento(string nome, int tempo, int potencia, string instrucoes, string caracter)
+        public Aquecimento(string nome, string tempo, string potencia, string instrucoes, string caracter)
         {
             this.Nome = nome;
             this.Tempo = tempo;
